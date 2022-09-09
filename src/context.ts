@@ -967,6 +967,7 @@ export class Context implements RenamedUpdate {
             | "upload_photo"
             | "record_video"
             | "upload_video"
+            | "upload_audio"
             | "record_voice"
             | "upload_voice"
             | "upload_document"

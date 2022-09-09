@@ -30,7 +30,7 @@ import {
 export type Other<
     R extends RawApi,
     M extends Methods<R>,
-    X extends string = never,
+    X extends string = never
 > = Omit<Payload<M, R>, X>;
 /**
  * This class provides access to the full Telegram Bot API. All methods of the
@@ -90,12 +90,12 @@ export class Api<R extends RawApi = RawApi> {
     constructor(
         token: string,
         config?: ApiClientOptions,
-        webhookReplyEnvelope?: WebhookReplyEnvelope,
+        webhookReplyEnvelope?: WebhookReplyEnvelope
     ) {
         const { raw, use, installedTransformers } = createRawApi<R>(
             token,
             config,
-            webhookReplyEnvelope,
+            webhookReplyEnvelope
         );
         this.raw = raw;
         this.config = {
@@ -141,7 +141,7 @@ export class Api<R extends RawApi = RawApi> {
     setWebhook(
         url: string,
         other?: Other<R, "setWebhook", "url">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setWebhook({ url, ...other }, signal);
     }
@@ -216,7 +216,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         text: string,
         other?: Other<R, "sendMessage", "chat_id" | "text">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendMessage({ chat_id, text, ...other }, signal);
     }
@@ -241,11 +241,11 @@ export class Api<R extends RawApi = RawApi> {
             "forwardMessage",
             "chat_id" | "from_chat_id" | "message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.forwardMessage(
             { chat_id, from_chat_id, message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -269,11 +269,11 @@ export class Api<R extends RawApi = RawApi> {
             "copyMessage",
             "chat_id" | "from_chat_id" | "message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.copyMessage(
             { chat_id, from_chat_id, message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -291,7 +291,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         photo: InputFile | string,
         other?: Other<R, "sendPhoto", "chat_id" | "photo">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendPhoto({ chat_id, photo, ...other }, signal);
     }
@@ -312,7 +312,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         audio: InputFile | string,
         other?: Other<R, "sendAudio", "chat_id" | "audio">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendAudio({ chat_id, audio, ...other }, signal);
     }
@@ -331,7 +331,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         document: InputFile | string,
         other?: Other<R, "sendDocument", "chat_id" | "document">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendDocument({ chat_id, document, ...other }, signal);
     }
@@ -350,7 +350,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         video: InputFile | string,
         other?: Other<R, "sendVideo", "chat_id" | "video">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendVideo({ chat_id, video, ...other }, signal);
     }
@@ -369,7 +369,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         animation: InputFile | string,
         other?: Other<R, "sendAnimation", "chat_id" | "animation">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendAnimation({ chat_id, animation, ...other }, signal);
     }
@@ -388,7 +388,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         voice: InputFile | string,
         other?: Other<R, "sendVoice", "chat_id" | "voice">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendVoice({ chat_id, voice, ...other }, signal);
     }
@@ -408,11 +408,11 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         video_note: InputFile | string,
         other?: Other<R, "sendVideoNote", "chat_id" | "video_note">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendVideoNote(
             { chat_id, video_note, ...other },
-            signal,
+            signal
         );
     }
 
@@ -435,7 +435,7 @@ export class Api<R extends RawApi = RawApi> {
             | InputMediaVideo
         >,
         other?: Other<R, "sendMediaGroup", "chat_id" | "media">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendMediaGroup({ chat_id, media, ...other }, signal);
     }
@@ -456,11 +456,11 @@ export class Api<R extends RawApi = RawApi> {
         latitude: number,
         longitude: number,
         other?: Other<R, "sendLocation", "chat_id" | "latitude" | "longitude">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendLocation(
             { chat_id, latitude, longitude, ...other },
-            signal,
+            signal
         );
     }
 
@@ -490,11 +490,11 @@ export class Api<R extends RawApi = RawApi> {
             | "latitude"
             | "longitude"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageLiveLocation(
             { chat_id, message_id, latitude, longitude, ...other },
-            signal,
+            signal
         );
     }
 
@@ -522,11 +522,11 @@ export class Api<R extends RawApi = RawApi> {
             | "latitude"
             | "longitude"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageLiveLocation(
             { inline_message_id, latitude, longitude, ...other },
-            signal,
+            signal
         );
     }
 
@@ -548,11 +548,11 @@ export class Api<R extends RawApi = RawApi> {
             "stopMessageLiveLocation",
             "chat_id" | "message_id" | "inline_message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.stopMessageLiveLocation(
             { chat_id, message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -572,11 +572,11 @@ export class Api<R extends RawApi = RawApi> {
             "stopMessageLiveLocation",
             "chat_id" | "message_id" | "inline_message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.stopMessageLiveLocation(
             { inline_message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -604,11 +604,11 @@ export class Api<R extends RawApi = RawApi> {
             "sendVenue",
             "chat_id" | "latitude" | "longitude" | "title" | "address"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendVenue(
             { chat_id, latitude, longitude, title, address, ...other },
-            signal,
+            signal
         );
     }
 
@@ -632,11 +632,11 @@ export class Api<R extends RawApi = RawApi> {
             "sendContact",
             "chat_id" | "phone_number" | "first_name"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendContact(
             { chat_id, phone_number, first_name, ...other },
-            signal,
+            signal
         );
     }
 
@@ -656,11 +656,11 @@ export class Api<R extends RawApi = RawApi> {
         question: string,
         options: readonly string[],
         other?: Other<R, "sendPoll", "chat_id" | "question" | "options">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendPoll(
             { chat_id, question, options, ...other },
-            signal,
+            signal
         );
     }
 
@@ -678,7 +678,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         emoji: string,
         other?: Other<R, "sendDice", "chat_id" | "emoji">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendDice({ chat_id, emoji, ...other }, signal);
     }
@@ -703,13 +703,14 @@ export class Api<R extends RawApi = RawApi> {
             | "upload_photo"
             | "record_video"
             | "upload_video"
+            | "upload_audio"
             | "record_voice"
             | "upload_voice"
             | "upload_document"
             | "find_location"
             | "record_video_note"
             | "upload_video_note",
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendChatAction({ chat_id, action }, signal);
     }
@@ -726,7 +727,7 @@ export class Api<R extends RawApi = RawApi> {
     getUserProfilePhotos(
         user_id: number,
         other?: Other<R, "getUserProfilePhotos", "user_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.getUserProfilePhotos({ user_id, ...other }, signal);
     }
@@ -764,7 +765,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         user_id: number,
         other?: Other<R, "banChatMember", "chat_id" | "user_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.banChatMember({ chat_id, user_id, ...other }, signal);
     }
@@ -783,7 +784,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         user_id: number,
         other?: Other<R, "unbanChatMember", "chat_id" | "user_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.unbanChatMember({ chat_id, user_id, ...other }, signal);
     }
@@ -808,11 +809,11 @@ export class Api<R extends RawApi = RawApi> {
             "restrictChatMember",
             "chat_id" | "user_id" | "permissions"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.restrictChatMember(
             { chat_id, user_id, permissions, ...other },
-            signal,
+            signal
         );
     }
 
@@ -830,11 +831,11 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         user_id: number,
         other?: Other<R, "promoteChatMember", "chat_id" | "user_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.promoteChatMember(
             { chat_id, user_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -852,11 +853,11 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         user_id: number,
         custom_title: string,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setChatAdministratorCustomTitle(
             { chat_id, user_id, custom_title },
-            signal,
+            signal
         );
     }
 
@@ -872,7 +873,7 @@ export class Api<R extends RawApi = RawApi> {
     banChatSenderChat(
         chat_id: number | string,
         sender_chat_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.banChatSenderChat({ chat_id, sender_chat_id }, signal);
     }
@@ -889,11 +890,11 @@ export class Api<R extends RawApi = RawApi> {
     unbanChatSenderChat(
         chat_id: number | string,
         sender_chat_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.unbanChatSenderChat(
             { chat_id, sender_chat_id },
-            signal,
+            signal
         );
     }
 
@@ -909,7 +910,7 @@ export class Api<R extends RawApi = RawApi> {
     setChatPermissions(
         chat_id: number | string,
         permissions: ChatPermissions,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setChatPermissions({ chat_id, permissions }, signal);
     }
@@ -940,7 +941,7 @@ export class Api<R extends RawApi = RawApi> {
     createChatInviteLink(
         chat_id: number | string,
         other?: Other<R, "createChatInviteLink", "chat_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.createChatInviteLink({ chat_id, ...other }, signal);
     }
@@ -959,11 +960,11 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         invite_link: string,
         other?: Other<R, "editChatInviteLink", "chat_id" | "invite_link">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editChatInviteLink(
             { chat_id, invite_link, ...other },
-            signal,
+            signal
         );
     }
 
@@ -979,7 +980,7 @@ export class Api<R extends RawApi = RawApi> {
     revokeChatInviteLink(
         chat_id: number | string,
         invite_link: string,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.revokeChatInviteLink({ chat_id, invite_link }, signal);
     }
@@ -996,7 +997,7 @@ export class Api<R extends RawApi = RawApi> {
     approveChatJoinRequest(
         chat_id: number | string,
         user_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.approveChatJoinRequest({ chat_id, user_id }, signal);
     }
@@ -1013,7 +1014,7 @@ export class Api<R extends RawApi = RawApi> {
     declineChatJoinRequest(
         chat_id: number | string,
         user_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.declineChatJoinRequest({ chat_id, user_id }, signal);
     }
@@ -1030,7 +1031,7 @@ export class Api<R extends RawApi = RawApi> {
     setChatPhoto(
         chat_id: number | string,
         photo: InputFile,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setChatPhoto({ chat_id, photo }, signal);
     }
@@ -1059,7 +1060,7 @@ export class Api<R extends RawApi = RawApi> {
     setChatTitle(
         chat_id: number | string,
         title: string,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setChatTitle({ chat_id, title }, signal);
     }
@@ -1076,7 +1077,7 @@ export class Api<R extends RawApi = RawApi> {
     setChatDescription(
         chat_id: number | string,
         description?: string,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setChatDescription({ chat_id, description }, signal);
     }
@@ -1095,11 +1096,11 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         message_id: number,
         other?: Other<R, "pinChatMessage", "chat_id" | "message_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.pinChatMessage(
             { chat_id, message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1116,7 +1117,7 @@ export class Api<R extends RawApi = RawApi> {
     unpinChatMessage(
         chat_id: number | string,
         message_id?: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.unpinChatMessage({ chat_id, message_id }, signal);
     }
@@ -1198,7 +1199,7 @@ export class Api<R extends RawApi = RawApi> {
     getChatMember(
         chat_id: number | string,
         user_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.getChatMember({ chat_id, user_id }, signal);
     }
@@ -1215,11 +1216,11 @@ export class Api<R extends RawApi = RawApi> {
     setChatStickerSet(
         chat_id: number | string,
         sticker_set_name: string,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setChatStickerSet(
             { chat_id, sticker_set_name },
-            signal,
+            signal
         );
     }
 
@@ -1249,11 +1250,11 @@ export class Api<R extends RawApi = RawApi> {
     answerCallbackQuery(
         callback_query_id: string,
         other?: Other<R, "answerCallbackQuery", "callback_query_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.answerCallbackQuery(
             { callback_query_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1267,7 +1268,7 @@ export class Api<R extends RawApi = RawApi> {
      */
     setChatMenuButton(
         other?: Other<R, "setChatMenuButton">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setChatMenuButton({ ...other }, signal);
     }
@@ -1282,7 +1283,7 @@ export class Api<R extends RawApi = RawApi> {
      */
     getChatMenuButton(
         other?: Other<R, "getChatMenuButton">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.getChatMenuButton({ ...other }, signal);
     }
@@ -1297,7 +1298,7 @@ export class Api<R extends RawApi = RawApi> {
      */
     setMyDefaultAdministratorRights(
         other?: Other<R, "setMyDefaultAdministratorRights">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setMyDefaultAdministratorRights({ ...other }, signal);
     }
@@ -1312,7 +1313,7 @@ export class Api<R extends RawApi = RawApi> {
      */
     getMyDefaultAdministratorRights(
         other?: Other<R, "setMyDefaultAdministratorRights">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.getMyDefaultAdministratorRights({ ...other }, signal);
     }
@@ -1329,7 +1330,7 @@ export class Api<R extends RawApi = RawApi> {
     setMyCommands(
         commands: readonly BotCommand[],
         other?: Other<R, "setMyCommands", "commands">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setMyCommands({ commands, ...other }, signal);
     }
@@ -1344,7 +1345,7 @@ export class Api<R extends RawApi = RawApi> {
      */
     deleteMyCommands(
         other?: Other<R, "deleteMyCommands">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.deleteMyCommands({ ...other }, signal);
     }
@@ -1381,11 +1382,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageText",
             "chat_id" | "message_id" | "inline_message_id" | "text"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageText(
             { chat_id, message_id, text, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1406,11 +1407,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageText",
             "chat_id" | "message_id" | "inline_message_id" | "text"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageText(
             { inline_message_id, text, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1432,11 +1433,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageCaption",
             "chat_id" | "message_id" | "inline_message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageCaption(
             { chat_id, message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1456,11 +1457,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageCaption",
             "chat_id" | "message_id" | "inline_message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageCaption(
             { inline_message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1484,11 +1485,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageMedia",
             "chat_id" | "message_id" | "inline_message_id" | "media"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageMedia(
             { chat_id, message_id, media, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1510,11 +1511,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageMedia",
             "chat_id" | "message_id" | "inline_message_id" | "media"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageMedia(
             { inline_message_id, media, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1536,11 +1537,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageReplyMarkup",
             "chat_id" | "message_id" | "inline_message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageReplyMarkup(
             { chat_id, message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1560,11 +1561,11 @@ export class Api<R extends RawApi = RawApi> {
             "editMessageReplyMarkup",
             "chat_id" | "message_id" | "inline_message_id"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.editMessageReplyMarkup(
             { inline_message_id, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1582,7 +1583,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         message_id: number,
         other?: Other<R, "stopPoll", "chat_id" | "message_id">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.stopPoll({ chat_id, message_id, ...other }, signal);
     }
@@ -1607,7 +1608,7 @@ export class Api<R extends RawApi = RawApi> {
     deleteMessage(
         chat_id: number | string,
         message_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.deleteMessage({ chat_id, message_id }, signal);
     }
@@ -1626,7 +1627,7 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number | string,
         sticker: InputFile | string,
         other?: Other<R, "sendSticker", "chat_id" | "sticker">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendSticker({ chat_id, sticker, ...other }, signal);
     }
@@ -1667,7 +1668,7 @@ export class Api<R extends RawApi = RawApi> {
     uploadStickerFile(
         user_id: number,
         png_sticker: InputFile,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.uploadStickerFile({ user_id, png_sticker }, signal);
     }
@@ -1694,11 +1695,11 @@ export class Api<R extends RawApi = RawApi> {
             "createNewStickerSet",
             "user_id" | "name" | "title" | "emojis"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.createNewStickerSet(
             { user_id, name, title, emojis, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1718,11 +1719,11 @@ export class Api<R extends RawApi = RawApi> {
         name: string,
         emojis: string,
         other?: Other<R, "addStickerToSet", "user_id" | "name" | "emojis">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.addStickerToSet(
             { user_id, name, emojis, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1738,7 +1739,7 @@ export class Api<R extends RawApi = RawApi> {
     setStickerPositionInSet(
         sticker: string,
         position: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setStickerPositionInSet({ sticker, position }, signal);
     }
@@ -1769,7 +1770,7 @@ export class Api<R extends RawApi = RawApi> {
         name: string,
         user_id: number,
         thumb?: InputFile | string,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setStickerSetThumb({ name, user_id, thumb }, signal);
     }
@@ -1791,11 +1792,11 @@ export class Api<R extends RawApi = RawApi> {
         inline_query_id: string,
         results: readonly InlineQueryResult[],
         other?: Other<R, "answerInlineQuery", "inline_query_id" | "results">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.answerInlineQuery(
             { inline_query_id, results, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1811,7 +1812,7 @@ export class Api<R extends RawApi = RawApi> {
     answerWebAppQuery(
         web_app_query_id: string,
         result: InlineQueryResult,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.answerWebAppQuery({ web_app_query_id, result }, signal);
     }
@@ -1850,18 +1851,21 @@ export class Api<R extends RawApi = RawApi> {
             | "currency"
             | "prices"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
-        return this.raw.sendInvoice({
-            chat_id,
-            title,
-            description,
-            payload,
-            provider_token,
-            currency,
-            prices,
-            ...other,
-        }, signal);
+        return this.raw.sendInvoice(
+            {
+                chat_id,
+                title,
+                description,
+                payload,
+                provider_token,
+                currency,
+                prices,
+                ...other,
+            },
+            signal
+        );
     }
 
     /**
@@ -1895,17 +1899,20 @@ export class Api<R extends RawApi = RawApi> {
             | "currency"
             | "prices"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
-        return this.raw.createInvoiceLink({
-            title,
-            description,
-            payload,
-            provider_token,
-            currency,
-            prices,
-            ...other,
-        }, signal);
+        return this.raw.createInvoiceLink(
+            {
+                title,
+                description,
+                payload,
+                provider_token,
+                currency,
+                prices,
+                ...other,
+            },
+            signal
+        );
     }
 
     /**
@@ -1922,11 +1929,11 @@ export class Api<R extends RawApi = RawApi> {
         shipping_query_id: string,
         ok: boolean,
         other?: Other<R, "answerShippingQuery", "shipping_query_id" | "ok">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.answerShippingQuery(
             { shipping_query_id, ok, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1948,11 +1955,11 @@ export class Api<R extends RawApi = RawApi> {
             "answerPreCheckoutQuery",
             "pre_checkout_query_id" | "ok"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.answerPreCheckoutQuery(
             { pre_checkout_query_id, ok, ...other },
-            signal,
+            signal
         );
     }
 
@@ -1970,7 +1977,7 @@ export class Api<R extends RawApi = RawApi> {
     setPassportDataErrors(
         user_id: number,
         errors: readonly PassportElementError[],
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setPassportDataErrors({ user_id, errors }, signal);
     }
@@ -1989,11 +1996,11 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number,
         game_short_name: string,
         other?: Other<R, "sendGame", "chat_id" | "game_short_name">,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.sendGame(
             { chat_id, game_short_name, ...other },
-            signal,
+            signal
         );
     }
 
@@ -2019,11 +2026,11 @@ export class Api<R extends RawApi = RawApi> {
             "setGameScore",
             "chat_id" | "message_id" | "inline_message_id" | "user_id" | "score"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setGameScore(
             { chat_id, message_id, user_id, score, ...other },
-            signal,
+            signal
         );
     }
 
@@ -2047,11 +2054,11 @@ export class Api<R extends RawApi = RawApi> {
             "setGameScore",
             "chat_id" | "message_id" | "inline_message_id" | "user_id" | "score"
         >,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.setGameScore(
             { inline_message_id, user_id, score, ...other },
-            signal,
+            signal
         );
     }
 
@@ -2071,11 +2078,11 @@ export class Api<R extends RawApi = RawApi> {
         chat_id: number,
         message_id: number,
         user_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.getGameHighScores(
             { chat_id, message_id, user_id },
-            signal,
+            signal
         );
     }
 
@@ -2093,11 +2100,11 @@ export class Api<R extends RawApi = RawApi> {
     getGameHighScoresInline(
         inline_message_id: string,
         user_id: number,
-        signal?: AbortSignal,
+        signal?: AbortSignal
     ) {
         return this.raw.getGameHighScores(
             { inline_message_id, user_id },
-            signal,
+            signal
         );
     }
 }
